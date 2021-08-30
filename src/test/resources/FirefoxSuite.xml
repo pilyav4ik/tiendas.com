@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Accept Cookies Firefox" parallel="methods">
+    <test name="Firefox Local">
+        <parameter name="browserName" value="firefox"/>
+        <classes>
+            <class name="com.pilyav4ik.TestsRunner"/>
+        </classes>
+    </test>
+</suite>
+
