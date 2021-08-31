@@ -12,13 +12,13 @@ public class ChromeDriverManager  extends DriverManager{
 
     private ChromeDriverService chromeDriverService;
     ChromeOptions options = new ChromeOptions();
+
     void startService() {
         if (chromeDriverService == null){
-            options.setHeadless(true);
+            options.setHeadless(false);
             chromeDriverService = new ChromeDriverService.Builder()
                     .usingDriverExecutable(new File(
                             System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\chromedriver.exe"))
-
                     .usingAnyFreePort()
                     .build();
         }
@@ -31,6 +31,6 @@ public class ChromeDriverManager  extends DriverManager{
     }
 
     void createDriver() {
-        driver = new ChromeDriver(chromeDriverService);
+        driver = new ChromeDriver(chromeDriverService, options);
     }
 }

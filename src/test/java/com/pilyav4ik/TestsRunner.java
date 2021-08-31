@@ -13,5 +13,4 @@ public class TestsRunner extends BaseUtil {
         BasePage basePage = new BasePage(driver);
         basePage.clickToAcceptCookies();
     }
-
 }

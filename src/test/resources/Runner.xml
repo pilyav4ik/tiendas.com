@@ -3,6 +3,6 @@
 <suite name="All suites" parallel="true">
     <suite-files>
         <suite-file path="ChromeSuite.xml"/>
-        <suite-file path="FirefoxSuite.xml"/>
+        <!--<suite-file path="FirefoxSuite.xml"/>-->
     </suite-files>
 </suite>
