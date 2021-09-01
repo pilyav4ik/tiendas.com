@@ -3,10 +3,12 @@ package com.pilyav4ik.driver;
 import com.pilyav4ik.manager.DriverManager;
 import com.pilyav4ik.manager.DriverManagerFactory;
 import com.pilyav4ik.manager.DriverType;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -23,11 +25,11 @@ public class BaseUtil {
     DriverManager driverManager;
 
     @BeforeMethod
-    @Parameters("browserName")
-    public void setUp(@Optional String browserName) throws IOException {
+    @Parameters({"browserName", "url"})
+    public void setUp(@Optional String browserName, String url) throws IOException {
         getLocalDriver(browserName);
         driver.manage().window().maximize();
-        driver.navigate().to("https://tiendas.com");
+        driver.navigate().to(url);
     }
 
     public WebDriver getLocalDriver(String browserName) throws IOException {

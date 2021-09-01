@@ -3,6 +3,7 @@
 <suite name="Accept Cookies Chrome" parallel="methods">
     <test name="Chrome Local">
         <parameter name="browserName" value="chrome"/>
+        <parameter name="url" value="https://tiendas.com"/>
         <classes>
             <class name="com.pilyav4ik.TestsRunner"/>
         </classes>
