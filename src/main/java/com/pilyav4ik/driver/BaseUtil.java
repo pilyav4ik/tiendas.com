@@ -3,7 +3,6 @@ package com.pilyav4ik.driver;
 import com.pilyav4ik.manager.DriverManager;
 import com.pilyav4ik.manager.DriverManagerFactory;
 import com.pilyav4ik.manager.DriverType;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -25,11 +24,13 @@ public class BaseUtil {
     DriverManager driverManager;
 
     @BeforeMethod
-    @Parameters({"browserName", "url"})
-    public void setUp(@Optional String browserName, String url) throws IOException {
+    @Parameters({"browserName", "url", "headlessMode"})
+    public void setUp(@Optional String browserName, String url, @Optional String headlessMode) throws IOException {
         getLocalDriver(browserName);
+        getLocalDriverInHeadless(browserName, headlessMode);
         driver.manage().window().maximize();
         driver.navigate().to(url);
+
     }
 
     public WebDriver getLocalDriver(String browserName) throws IOException {
@@ -41,6 +42,22 @@ public class BaseUtil {
         } else if (browserName.equalsIgnoreCase("Firefox")) {
                 driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
                 driver = driverManager.getDriver();
+        }
+
+        return driver;
+    }
+
+    public WebDriver getLocalDriverInHeadless(String browserName, String headlessMode) throws IOException {
+        if (headlessMode.equalsIgnoreCase("headless")) {
+            driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+            driver = driverManager.getDriverInHeadless();
+            ChromeOptions options = new ChromeOptions();
+            options.setHeadless(true);
+        } else if (browserName.equalsIgnoreCase("Firefox") && headlessMode.equalsIgnoreCase("headless")) {
+            driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
+            driver = driverManager.getDriverInHeadless();
+            FirefoxOptions options = new FirefoxOptions();
+            options.setHeadless(true);
         }
 
         return driver;

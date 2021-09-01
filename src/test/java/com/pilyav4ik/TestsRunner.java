@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class TestsRunner extends BaseUtil {
 
     @Test
-    public void test1(){
+    public void AcceptCookies(){
         BasePage basePage = new BasePage(driver);
         basePage.clickToAcceptCookies();
     }

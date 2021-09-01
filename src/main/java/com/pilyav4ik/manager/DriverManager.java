@@ -12,6 +12,7 @@ public abstract class DriverManager {
     abstract void startService() throws IOException;
     abstract void stopService();
     abstract void  createDriver();
+    abstract void startServiceInHeadless();
 
 
     public void quitDriver(){
@@ -23,6 +24,14 @@ public abstract class DriverManager {
     public WebDriver getDriver() throws IOException {
         if (driver == null){
             startService();
+            createDriver();
+        }
+        return driver;
+    }
+
+    public WebDriver getDriverInHeadless() throws IOException {
+        if (driver == null){
+            startServiceInHeadless();
             createDriver();
         }
         return driver;
