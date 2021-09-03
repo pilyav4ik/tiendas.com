@@ -10,7 +10,8 @@
 
 
     <properties>
-        <maven.compiler.release>11</maven.compiler.release>
+        <java.version>1.8</java.version>
+        <maven.compiler.release>1.8</maven.compiler.release>
         <cucumber.version>6.11.0</cucumber.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
