@@ -9,4 +9,13 @@
             <class name="com.pilyav4ik.TestsRunner"/>
         </classes>
     </test>
+
+    <test name="Search product from home page. Chrome Local">
+        <parameter name="browserName" value="chrome"/>
+        <parameter name="headlessMode" value="true"/>
+        <parameter name="url" value="https://tiendas.com"/>
+        <classes>
+            <class name="com.pilyav4ik.search_fuctionality.SearchTestsRunner"/>
+        </classes>
+    </test>
 </suite>

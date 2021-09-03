@@ -48,7 +48,7 @@ public class BaseUtil {
     }
 
     public WebDriver getLocalDriverInHeadless(String browserName, String headlessMode) throws IOException {
-        if (headlessMode.equalsIgnoreCase("headless")) {
+        if (browserName.equalsIgnoreCase("Chrome") && headlessMode.equalsIgnoreCase("headless")) {
             driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
             driver = driverManager.getDriverInHeadless();
             ChromeOptions options = new ChromeOptions();

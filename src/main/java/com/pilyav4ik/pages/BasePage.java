@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BasePage {
 
@@ -27,23 +28,32 @@ public class BasePage {
     @FindBy(xpath = "//span[contains(text(),'Cookies')]")
     WebElement textVisible;
 
-    @FindBy(xpath = "//input[name='q']")
+    @FindBy(xpath = "//input[@type='search']")
     WebElement searchField;
+
+    @FindBy(xpath = "//*[@id=\"hits\"]/div/div/ol/li")
+    List<WebElement> productName;
 
     public void clickToAcceptCookies(){
         webDriverWait.until(ExpectedConditions.elementToBeClickable(acceptCookies));
         acceptCookies.click();
     }
 
-    public void inputSearchText(){
-        searchField.sendKeys("iPhone 10");
+    public void inputSearchText(String searchText){
+        searchField.sendKeys("iPhone XR");
         searchField.sendKeys(Keys.ENTER);
     }
+
     public boolean textVisability(){
         webDriverWait.until(ExpectedConditions.visibilityOf(textVisible));
         if (!textVisible.isDisplayed()){
             return true;
         }
         return false;
+    }
+
+    public String getProductNameAfterSearch() throws InterruptedException {
+        Thread.sleep(2000);
+        return productName.iterator().next().getText();
     }
 }

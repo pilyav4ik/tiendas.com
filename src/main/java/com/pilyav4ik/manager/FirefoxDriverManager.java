@@ -26,7 +26,7 @@ public class FirefoxDriverManager extends DriverManager{
     void startServiceInHeadless() {
         if (firefoxDriverService == null){
             FirefoxOptions options = new FirefoxOptions();
-            options.setHeadless(true);
+            options.addArguments("--headless");
             firefoxDriverService = new GeckoDriverService.Builder()
                     .usingDriverExecutable(new File(
                             System.getProperty("user.dir") + "\\src\\main\\resources\\drivers\\geckodriver.exe"))

@@ -19,11 +19,14 @@ public class BasePageDefinition {
         basePage.clickToAcceptCookies();
     }
 
-    public void inputSearchText(){
-        basePage.inputSearchText();
+    public void inputSearchText(String searchText){
+        basePage.inputSearchText(searchText);
     }
     public void textVisability(){
         basePage.textVisability();
+    }
+    public void getProductName() throws InterruptedException {
+        basePage.getProductNameAfterSearch();
     }
 
 }
